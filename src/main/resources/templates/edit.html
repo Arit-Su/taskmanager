@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+<div class="container">
+    <h1>Edit Task</h1>
+    <form th:action="@{/update}" th:object="${task}" method="post" autocomplete="off" style="max-width:400px;margin:auto;">
+        <input type="hidden" th:field="*{id}" />
+        <input type="text" th:field="*{description}" required style="width:100%;margin-bottom:1em;" />
+        <div style="margin-bottom:1.2em;">
+            <label>
+                <input type="checkbox" th:field="*{completed}" /> <span>Completed</span>
+            </label>
+        </div>
+        <button type="submit">Save</button>
+        <a th:href="@{/}" class="button-link" style="background:#e0e7ff;color:#4f46e5;">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

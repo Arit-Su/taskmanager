@@ -1,0 +1,126 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8fafc;
+    color: #222;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 650px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 2em 2.5em;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.2em;
+    color: #4f46e5;
+    letter-spacing: 1px;
+}
+
+form {
+    margin-bottom: 1.5em;
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 0.6em;
+    border: 1px solid #bdbdbd;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+button, a.button-link {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    padding: 0.55em 1.2em;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+    margin: 0 2px;
+    transition: background 0.14s;
+}
+
+button[disabled], button:disabled {
+    background: #a5b4fc;
+    cursor: not-allowed;
+}
+
+a.button-link {
+    display: inline-block;
+}
+
+.filters {
+    text-align: center;
+    margin-bottom: 1.3em;
+}
+
+.filters a {
+    color: #4f46e5;
+    margin: 0 7px;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 4px;
+    transition: background 0.14s;
+}
+
+.filters a.active, .filters a:hover {
+    background: #e0e7ff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0.5em;
+}
+
+th, td {
+    padding: 0.75em 0.4em;
+    text-align: left;
+}
+
+th {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+tr {
+    border-bottom: 1px solid #ececec;
+}
+
+tr:last-child {
+    border-bottom: none;
+}
+
+.status-completed {
+    color: #22c55e;
+    font-weight: 500;
+}
+
+.status-pending {
+    color: #f59e42;
+    font-weight: 500;
+}
+
+td.actions {
+    min-width: 160px;
+}
+
+@media (max-width: 700px) {
+    .container {
+        padding: 1.1em 0.7em;
+    }
+    th, td {
+        padding: 0.5em 0.2em;
+    }
+}

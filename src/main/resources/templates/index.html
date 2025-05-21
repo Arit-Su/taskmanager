@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task Manager</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+<div class="container">
+    <h1>Task Manager</h1>
+    <form th:action="@{/add}" method="post" autocomplete="off">
+        <input type="text" th:field="${task.description}" placeholder="Add a new task..." required />
+        <button type="submit">Add</button>
+    </form>
+    <div class="filters">
+        <a th:href="@{/?filter=all}" th:classappend="${filter} == 'all' ? 'active' : ''">All</a>
+        <a th:href="@{/?filter=completed}" th:classappend="${filter} == 'completed' ? 'active' : ''">Completed</a>
+        <a th:href="@{/?filter=pending}" th:classappend="${filter} == 'pending' ? 'active' : ''">Pending</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Status</th>
+                <th style="text-align:center;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.description}"
+                th:style="${task.completed} ? 'text-decoration: line-through; color: #888;' : ''"></td>
+            <td>
+                <span th:if="${task.completed}" class="status-completed">Completed</span>
+                <span th:if="${!task.completed}" class="status-pending">Pending</span>
+            </td>
+            <td class="actions">
+                <form th:action="@{/complete/{id}(id=${task.id})}" method="post" style="display:inline">
+                    <button type="submit" th:disabled="${task.completed}">Mark Completed</button>
+                </form>
+                <a th:href="@{/edit/{id}(id=${task.id})}" class="button-link">Edit</a>
+                <form th:action="@{/delete/{id}(id=${task.id})}" method="post" style="display:inline">
+                    <button type="submit" onclick=" confirm('Delete this task?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+        <tr th:if="${tasks.size()} == 0">
+            <td colspan="3" style="text-align:center; color:#888;">No tasks found.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
